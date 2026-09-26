@@ -1,0 +1,1 @@
+python -m src.evaluation.metrics_eval --config configs/rag_config.yaml

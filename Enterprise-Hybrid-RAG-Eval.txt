@@ -1,0 +1,32 @@
+enterprise-hybrid-rag-eval/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                # Linting (ruff, mypy) y ejecuciones de tests
+├── configs/
+│   └── rag_config.yaml           # Parámetros ajustables (chunk size, alpha RRF, top_k)
+├── data/
+│   ├── raw/                      # Documentos de prueba (PDFs/Markdown)
+│   └── eval_ground_truth.json    # Dataset de prueba con QA de referencia
+├── src/
+│   ├── __init__.py
+│   ├── ingestion/
+│   │   ├── __init__.py
+│   │   └── chunker.py            # Custom Recursive + Metadata Enrichment
+│   ├── retrieval/
+│   │   ├── __init__.py
+│   │   ├── sparse_search.py      # BM25 Retriever
+│   │   ├── dense_search.py       # Qdrant / Vector Store Embeddings
+│   │   └── hybrid_engine.py      # Reciprocal Rank Fusion (RRF) + Cross-Encoder Reranker
+│   ├── generation/
+│   │   ├── __init__.py
+│   │   └── llm_chain.py          # Strict-structured output LLM execution
+│   └── evaluation/
+│       ├── __init__.py
+│       └── metrics_eval.py       # Evaluador RAGAS + Latencia + Costo por Token
+├── tests/
+│   └── test_retrieval.py
+├── .env.example
+├── Dockerfile
+├── Makefile
+├── requirements.txt
+└── README.md                     # README técnico de alta conversión
